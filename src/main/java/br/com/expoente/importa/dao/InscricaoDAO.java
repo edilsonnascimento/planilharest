@@ -6,6 +6,7 @@
 package br.com.expoente.importa.dao;
 
 import br.com.expoente.importa.entity.Inscricao;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +27,10 @@ public class InscricaoDAO {
     
     public void gravar(Inscricao inscricao){
         manager.persist(inscricao);
+    }
+
+    public List<Inscricao> listar() {
+        return manager.createQuery("SELECT i FROM Inscricao i", Inscricao.class).getResultList();
     }
     
 }

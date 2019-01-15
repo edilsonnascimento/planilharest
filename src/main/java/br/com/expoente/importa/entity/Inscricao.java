@@ -1,12 +1,16 @@
 package br.com.expoente.importa.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Inscricao {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer idInscicao;
     private Integer cod_cliente_sga;
 	private String nm_inscrito;
 	private String nm_serie;
@@ -62,5 +66,6 @@ public class Inscricao {
 	public void setNm_turno(String nm_turno) {
 		this.nm_turno = nm_turno;
 	}
-		
+   
+    	
 }
