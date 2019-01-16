@@ -7,7 +7,6 @@ package br.com.expoente.importa.conf;
 
 import br.com.expoente.importa.control.HomeController;
 import br.com.expoente.importa.dao.InscricaoDAO;
-import br.com.expoente.importa.infra.FileSaver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.multipart.MultipartResolver;
@@ -20,7 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author ednascimento
  */
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {HomeController.class, InscricaoDAO.class,FileSaver.class})
+@ComponentScan(basePackageClasses = {HomeController.class, InscricaoDAO.class})
 public class AppWebConfiguration {
 
     @Bean

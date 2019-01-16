@@ -7,6 +7,7 @@ package br.com.expoente.importa.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -16,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     
     @RequestMapping("/")
-    public String index(){
+    public ModelAndView index(){
         
-        return "home";
+        ModelAndView modelAndView = new ModelAndView("home");
+        
+        return modelAndView;
     }
     
 }

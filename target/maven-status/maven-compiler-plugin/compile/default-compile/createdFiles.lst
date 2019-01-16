@@ -4,8 +4,6 @@ br/com/expoente/importa/conf/ServletSpringMVC.class
 br/com/expoente/importa/dao/InscricaoDAO.class
 br/com/expoente/importa/conf/AppWebConfiguration.class
 br/com/expoente/importa/resource/ImportaPlanilha.class
-br/com/expoente/importa/control/Inscicao.class
 br/com/expoente/importa/entity/Inscricao.class
-br/com/expoente/importa/infra/FileSaver.class
 br/com/expoente/importa/control/LeitorInscricao.class
 br/com/expoente/importa/conf/JPAConfiguration.class
