@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Clock;
 
 import java.util.List;
 
@@ -22,10 +23,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -38,26 +41,43 @@ public class InscricaoController {
     @Autowired
     private InscricaoDAO inscricaoDao;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView listar() {
         
-        ModelAndView modelAndView = new ModelAndView("home");
+    @RequestMapping("lista")
+    public ModelAndView lista(){
+        ModelAndView modelAndView = new ModelAndView("/importar/listar");
         
-        List<Inscricao> inscricoes = inscricaoDao.listar();
+        System.out.print("listar");
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/listaPorCLiente")
+    public ModelAndView listaPorCLiente(Integer cod_cliente_sga) {
+                
+        ModelAndView modelAndView = new ModelAndView("/importar/listar");
+                        
+        List<Inscricao> inscricoes = inscricaoDao.listar(cod_cliente_sga);
         
         modelAndView.addObject("inscricoes", inscricoes);       
         
         return modelAndView;
         
     }
-
+    
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView importa(MultipartFile arquivo, Integer codigo) throws IOException {
+    public ModelAndView importa(MultipartFile arquivo, Integer codigo, RedirectAttributes redirectAttributes) throws IOException {
        
-        File caminhoArquivo = new File("/home/ednascimento/Downloads/" + arquivo.getOriginalFilename());
-
-        processaPlanilha(caminhoArquivo, codigo);        
-
+        
+        System.out.println("arquivo " + arquivo.getOriginalFilename().isEmpty());
+        if(codigo == null || arquivo.getOriginalFilename().isEmpty()){
+           redirectAttributes.addFlashAttribute("mensagem", "Favor informar o campo 'Código de Cliente'");
+           
+        } else{        
+            File caminhoArquivo = new File("/home/ednascimento/Downloads/" + arquivo.getOriginalFilename());
+            processaPlanilha(caminhoArquivo, codigo);                        
+            redirectAttributes.addFlashAttribute("mensagem", "Arquivo: " + arquivo.getOriginalFilename() + " IMPORTADO COM SUCESSO!!!");            
+        }
+        
         return new ModelAndView("redirect:/");
     }
         

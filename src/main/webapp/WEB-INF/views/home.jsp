@@ -29,7 +29,7 @@
                         <a class="nav-link" href="#">Importar<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${s:mvcUrl('IC#listar').build()}">Listar</a>
+                        <a class="nav-link" href="${s:mvcUrl('IC#lista').build()}"> Listar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"></a>
@@ -44,6 +44,7 @@
         <br /><br />
         
         <center>
+            <p>${mensagem}</p>
             <form:form action="${s:mvcUrl('IC#importa').build()}" method="post" enctype="multipart/form-data">
                 <div>
                     <label>Código do Cliente</label>
@@ -55,32 +56,7 @@
                 </div>
                 <button type="submit">Importar</button>
             </form:form>
-        </center>
-
-        <br /><br /><br /><br />
-
-        <div class="container">
-            <table class="table table-bordered table-striped table-hover">
-                <tr>
-                    <td>Código SGA</td>
-                    <td>Nome Aluno</td>
-                    <td>Serie</td>
-                    <td>Curso</td>
-                    <td>Turma</td>
-                    <td>Turno</td>
-                </tr>            
-                <c:forEach items="${inscricoes}" var="inscricao">
-                    <tr>
-                        <td>${inscricao.cod_cliente_sga}</td>                  
-                        <td>${inscricao.nm_inscrito}</td>                
-                        <td>${inscricao.nm_serie}</td>
-                        <td>${inscricao.nm_curso}</td>
-                        <td>${inscricao.nm_turma}</td>
-                        <td>${inscricao.nm_turno}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
+        </center>              
 
 </body>
 </html>

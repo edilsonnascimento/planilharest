@@ -4,6 +4,7 @@
 /home/ednascimento/netBeansProjects/planilharest/src/main/java/br/com/expoente/importa/resource/ImportaPlanilha.java
 /home/ednascimento/netBeansProjects/planilharest/src/main/java/br/com/expoente/importa/control/LeitorInscricao.java
 /home/ednascimento/netBeansProjects/planilharest/src/main/java/br/com/expoente/importa/conf/ServletSpringMVC.java
+/home/ednascimento/netBeansProjects/planilharest/src/main/java/br/com/expoente/importa/valid/InscricaoValidation.java
 /home/ednascimento/netBeansProjects/planilharest/src/main/java/br/com/expoente/importa/entity/Inscricao.java
 /home/ednascimento/netBeansProjects/planilharest/src/main/java/br/com/expoente/importa/conf/AppWebConfiguration.java
 /home/ednascimento/netBeansProjects/planilharest/src/main/java/br/com/expoente/importa/dao/InscricaoDAO.java

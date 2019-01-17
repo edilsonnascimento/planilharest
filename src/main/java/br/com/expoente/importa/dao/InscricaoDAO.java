@@ -29,8 +29,14 @@ public class InscricaoDAO {
         manager.persist(inscricao);
     }
 
-    public List<Inscricao> listar() {
-        return manager.createQuery("SELECT i FROM Inscricao i", Inscricao.class).getResultList();
+    public List<Inscricao> listar(Integer cod_cliente_sga) {
+        return manager.createQuery("SELECT i FROM Inscricao i WHERE i.cod_cliente_sga = :cod_cliente_sga", Inscricao.class)
+               .setParameter("cod_cliente_sga", cod_cliente_sga).getResultList();
+                
+    }
+    
+    public List<Inscricao> listarTodos() {
+        return manager.createQuery("SELECT i FROM Inscricao i").getResultList();
     }
     
 }
